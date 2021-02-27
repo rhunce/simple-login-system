@@ -1,12 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const app = express();
-const mongoose = require('mongoose');
-const expressEjsLayout = require('express-ejs-layouts');
+const expressEjsLayout = require('express-ejs-layouts')
+const flash = require('connect-flash');
+const session = require('express-session');
 
-//mongoose
-mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
-.then(() => console.log('Database Connected!'))
+// Mongoose
+mongoose.connect('mongodb://localhost/simpleLoginSystemApp',{useNewUrlParser: true, useUnifiedTopology : true})
+.then(() => console.log('Database Connected: simpleLoginSystemApp'))
 .catch((err)=> console.log(err));
 
 //EJS
