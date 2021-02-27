@@ -5,6 +5,8 @@ const app = express();
 const expressEjsLayout = require('express-ejs-layouts')
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+require("./config/passport")(passport);
 
 // Mongoose
 mongoose.connect('mongodb://localhost/simpleLoginSystemApp',{useNewUrlParser: true, useUnifiedTopology : true})
@@ -20,6 +22,10 @@ app.use(express.urlencoded({ extended : false }));
 
 // Express session
 app.use(session({ secret : 'secret', resave : true, saveUninitialized : true }));
+
+// Authentication
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Use flash
 app.use(flash());
