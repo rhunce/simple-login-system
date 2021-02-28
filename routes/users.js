@@ -84,8 +84,10 @@ router.post('/login', (req, res, next) => {
 });
 
 // LOGOUT ROUTES
-router.get('/logout',(req,res)=>{
-  //
+router.get('/logout', (req, res) => {
+  req.logout(); // .logout() method created by passport
+  req.flash('success_msg','Now logged out');
+  res.redirect('/users/login');
 });
 
 module.exports  = router;
